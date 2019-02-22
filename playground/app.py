@@ -21,6 +21,7 @@ def add_course():
     newCourse = Course(course_number=course_number,course_title=course_title)
     db.session.add(newCourse)
     db.session.commit()
+    courses = Course.query.all()
     return render_template("index.html", course_number=course_number, course_title=course_title, courses=courses)
 
 @app.route("/register_student/<int:course_id>/", methods=["GET","POST"])
