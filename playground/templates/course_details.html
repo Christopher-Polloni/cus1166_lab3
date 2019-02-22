@@ -1,0 +1,26 @@
+<html>
+{% extends 'layout.html' %}
+
+{% block head %}
+<h2>Registration Page</h2>
+<h4>Click <a href = "{{url_for('index')}}"> here</a> to return home</h4>
+{% endblock %}
+
+{% block body %}
+
+<b>Course ID:</b> {{course.id}}
+<b>Course Number:</b> {{course.course_number}}
+<b>Course Title:</b> {{course.course_title}}
+
+  <form action="{{url_for('register_student', course_id=course_id)}}" method="POST">
+    <p>Student Name <input type="text" name="name" placeholder="Enter Student Name"/> </p>
+    <p>Student Grade <input type="text" name="grade" placeholder="Enter Student Grade"/></p>
+    <p><button type="Submit"> Submit</button></p>
+  </form>
+
+  {% for i in students %}
+  <b>Name:</b> {{i.name}} <b>Grade:</b> {{i.grade}}<br />
+  {% endfor %}
+
+{% endblock %}
+</html>
